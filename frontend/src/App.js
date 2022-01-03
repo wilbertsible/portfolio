@@ -1,5 +1,8 @@
 import './App.css';
-import React from 'react'
+import React, {useEffect, useState} from 'react'
+
+import axios from 'axios';
+
 import { CssBaseline } from '@mui/material';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 
@@ -10,17 +13,28 @@ import Home from './pages/Home';
 const theme = createTheme();
 
 function App() {
-  const [state, setState] = React.useState({
-    mobileView:false
-  })
+  const [mobileView, setMobileView] = useState(false);
+  const [socials, setSocials] = useState([]);
 
-  const {mobileView} = state;
+  const url = "http://127.0.0.1:5000"
+    
+  useEffect(() => {
+    fetchSocials();
+  }, [])
 
-  React.useEffect(() =>{
+  async  function fetchSocials(){
+    await axios.get(url + "/social")
+    .then((socialsResponse) =>{
+      const socials = JSON.parse(socialsResponse.data);
+      setSocials(socials);
+    })
+  }
+
+  useEffect(() =>{
     const setResponsiveness = () => {
         return window.innerWidth < 900
-        ? setState((prevState) => ({...prevState, mobileView: true}))
-        : setState((prevState) => ({ ...prevState, mobileView: false}));
+        ? setMobileView(true)
+        : setMobileView(false);
     };
     setResponsiveness();
     window.addEventListener('resize', () => setResponsiveness());
@@ -33,7 +47,12 @@ function App() {
     <ThemeProvider theme = {theme}>
       <CssBaseline />
       <Routes>
-        <Route exact path="/" element={<Home mobileView={mobileView} />} />
+        <Route exact path="/" 
+        element={
+          <Home 
+          mobileView={mobileView}
+          socials={socials}
+          />} />
       </Routes>
     </ThemeProvider>
     

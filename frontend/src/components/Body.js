@@ -7,8 +7,7 @@ import AboutCard from '../components/AboutCard';
 import Social from '../components/Social';
 
 function Body(props){
-    const {sidebar, mobileView} = props;
-
+    const {sidebar, socials, mobileView} = props;
     const displayDesktop = () => {
         return(
             <Grid container spacing={5} sx={{ mt: 3 }}>
@@ -27,7 +26,7 @@ function Body(props){
                 description={sidebar.description}
                 />
                 <Social
-                social={sidebar.social}
+                socials={socials}
                 />
                 </Grid>
             </Grid>
@@ -53,7 +52,7 @@ function Body(props){
                 <Grid item xs={4}>
                 
                 <Social
-                social={sidebar.social}
+                socials={socials}
                 />
                 </Grid>
             </Grid>

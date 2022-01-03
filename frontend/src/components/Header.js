@@ -54,7 +54,6 @@ function Header(props){
         return(
             
             <Toolbar sx={{ borderBottom: 1, borderColor: 'divider' }}>
-                {console.log(mobileView)}
                 <Typography
                 component='h1'
                 variant='h4'

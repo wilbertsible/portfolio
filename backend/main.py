@@ -1,9 +1,11 @@
 import os
+import json
 
 from dotenv import load_dotenv, find_dotenv
 
 from flask import Flask
 from flask_restful import Api, Resource
+from flask_cors import CORS
 import Database.mongo as Mongodb
 from bson.json_util import dumps
 
@@ -11,6 +13,7 @@ from bson.json_util import dumps
 
 app = Flask(__name__)
 api = Api(app)
+cors = CORS(app)
 
 load_dotenv(find_dotenv())
 user = os.getenv('MONGO_USER')
@@ -24,7 +27,7 @@ class Social(Resource):
         json_data = dumps(list_cur)
         return json_data
 
-api.add_resource(Social, "/")
+api.add_resource(Social, "/social")
 
 if __name__ == "__main__":
     app.run(debug=True)
