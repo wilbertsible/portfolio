@@ -15,11 +15,13 @@ const theme = createTheme();
 function App() {
   const [mobileView, setMobileView] = useState(false);
   const [socials, setSocials] = useState([]);
+  const [headerSections, setheaderSections] = useState([])
 
   const url = "http://127.0.0.1:5000"
     
   useEffect(() => {
     fetchSocials();
+    fetchHeaderSections();
   }, [])
 
   async  function fetchSocials(){
@@ -30,6 +32,14 @@ function App() {
     })
   }
 
+  async  function fetchHeaderSections(){
+    await axios.get(url + "/header")
+    .then((heardersResponse) =>{
+      const headers = JSON.parse(heardersResponse.data);
+      setheaderSections(headers);
+    })
+  }
+  
   useEffect(() =>{
     const setResponsiveness = () => {
         return window.innerWidth < 900
@@ -52,6 +62,7 @@ function App() {
           <Home 
           mobileView={mobileView}
           socials={socials}
+          headers={headerSections}
           />} />
       </Routes>
     </ThemeProvider>

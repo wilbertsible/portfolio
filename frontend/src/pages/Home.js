@@ -9,15 +9,6 @@ import HeroImage from '../images/hero.jpg';
 import Body from '../components/Body'
 
 
-
-
-const sections = [
-    { title: 'Home', url: '#' },
-    { title: 'About', url: '#' },
-    { title: 'Projects', url: '#' },
-    { title: 'Contact', url: '#' },
-]
-
 const sidebar = {
     title: 'About',
     description:
@@ -26,11 +17,11 @@ const sidebar = {
 
 
 function Home(props){
-    const {mobileView, socials} = props
+    const {mobileView, socials, headers} = props
 
     return(
         <Container maxwidth="lg">
-        <Header title="Wilbert Sible" sections={sections} mobileView={mobileView}>
+        <Header title="Wilbert Sible" headers={headers} mobileView={mobileView}>
         </Header>
         <Hero hero={HeroImage} />
         <Body sidebar={sidebar} socials={socials} mobileView={mobileView}/>

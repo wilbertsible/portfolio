@@ -12,7 +12,10 @@ function Social(props) {
         <Typography variant="h6" gutterBottom sx={{ mt: 3 }}>
           Social
         </Typography>
-        {socials.map((network) => {
+        {socials.filter((network) =>{
+          return(network.is_active === true)
+        }).sort()
+        .map((network) => {
           return(
           <Link
             display="flex"

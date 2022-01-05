@@ -50,7 +50,6 @@ function Body(props){
                 <Post />
                 </Grid>
                 <Grid item xs={4}>
-                
                 <Social
                 socials={socials}
                 />

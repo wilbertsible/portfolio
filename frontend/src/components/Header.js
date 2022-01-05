@@ -7,7 +7,8 @@ import { Drawer } from '@mui/material';
 
 function Header(props){
 
-    const {sections, title, mobileView} = props;
+    const {headers, title, mobileView} = props;
+    console.log(headers)
     const [state, setState] = React.useState({
         drawerOpen: false
     })
@@ -31,15 +32,16 @@ function Header(props){
                     component="nav"
                     sx={{ justifyContent: 'space-between' }}
                     >
-                        {sections.map((section) => (
+                        {headers.map((headers) => (
                             <Button
                             color='inherit'
                             noWrap
-                            key={section.title}
-                            href={section.url}
+                            key={headers.title}
+                            href={headers.link}
+                            disabled={!headers.is_active}
                             sx={{ justifyContent: 'flex-end' }}
                             >
-                                {section.title}
+                                {headers.title}
                             </Button>
                         ))}
                     </Toolbar>
@@ -75,15 +77,16 @@ function Header(props){
                 open={drawerOpen}
                 onClose={handleDrawerClose}
                 >
-                    {sections.map((section) => (
+                    {headers.map((headers) => (
                         <Button
                         color='inherit'
                         noWrap
-                        key={section.title}
-                        href={section.url}
+                        key={headers.title}
+                        href={headers.link}
+                        disabled={!headers.is_active}
                         sx={{ justifyContent: 'flex-midlle' }}
                         >
-                            {section.title}
+                            {headers.title}
                         </Button>
                     ))}
                 </Drawer>
