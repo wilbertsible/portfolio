@@ -9,6 +9,7 @@ import { createTheme, ThemeProvider } from '@mui/material/styles';
 import { Route, Routes } from "react-router-dom";
 
 import Home from './pages/Home';
+import ProjectLayout from './pages/ProjectLayout';
 
 const theme = createTheme();
 
@@ -63,6 +64,14 @@ function App() {
           mobileView={mobileView}
           socials={socials}
           headers={headerSections}
+          />} />
+        <Route exact path="/Projects" 
+        element={
+          <ProjectLayout
+            mobileView={mobileView}
+            socials={socials}
+            headers={headerSections}
+            />}
           />} />
       </Routes>
     </ThemeProvider>

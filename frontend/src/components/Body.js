@@ -10,24 +10,32 @@ function Body(props){
     const {sidebar, socials, mobileView} = props;
     const displayDesktop = () => {
         return(
-            <Grid container spacing={5} sx={{ mt: 3 }}>
+            <Grid container spacing={5} sx={{ mt: 0 }}>
                 <Grid item xs={8} >
-                <Typography variant="h6" gutterBottom>
-                    {"Blog Post"}
-                </Typography>
-                <Divider />
-                <Post />
-                <Post />
-                <Post />
+                    <Typography variant="h6" gutterBottom>
+                        {"Projects"}
+                    </Typography>
+                    <Divider />
+                    <Grid container spacing={0} >
+                        <Grid item xs={12} md={12} sx={{mt: 2}}>
+                            <Post />
+                        </Grid>
+                        <Grid item xs={12} md={12} sx={{mt: 2}}>
+                            <Post />
+                        </Grid>
+                        <Grid item xs={12} md={12} sx={{mt: 2}}>
+                            <Post />
+                        </Grid>
+                    </Grid>
                 </Grid>
-                <Grid item xs={4}>
-                <AboutCard
-                title={sidebar.title}
-                description={sidebar.description}
-                />
-                <Social
-                socials={socials}
-                />
+                    <Grid item xs={4}>
+                    <AboutCard
+                    title={sidebar.title}
+                    description={sidebar.description}
+                    />
+                    <Social
+                    socials={socials}
+                    />
                 </Grid>
             </Grid>
         )

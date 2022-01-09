@@ -21,11 +21,10 @@ function Home(props){
 
     return(
         <Container maxwidth="lg">
-        <Header title="Wilbert Sible" headers={headers} mobileView={mobileView}>
-        </Header>
-        <Hero hero={HeroImage} />
-        <Body sidebar={sidebar} socials={socials} mobileView={mobileView}/>
-        <Footer />
+            <Header title="Wilbert Sible" headers={headers} mobileView={mobileView} />
+            <Hero hero={HeroImage} />
+            <Body sidebar={sidebar} socials={socials} mobileView={mobileView}/>
+            <Footer />
         </Container>
     )
 }
