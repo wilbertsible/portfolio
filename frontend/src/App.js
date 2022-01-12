@@ -10,6 +10,7 @@ import { Route, Routes } from "react-router-dom";
 
 import Home from './pages/Home';
 import ProjectLayout from './pages/ProjectLayout';
+import PC from './Content/PC/PC';
 
 const theme = createTheme();
 
@@ -71,7 +72,13 @@ function App() {
             mobileView={mobileView}
             socials={socials}
             headers={headerSections}
-            />}
+          />} />
+        <Route exact path="/Projects/PC" 
+        element={
+          <PC
+            mobileView={mobileView}
+            socials={socials}
+            headers={headerSections}
           />} />
       </Routes>
     </ThemeProvider>

@@ -25,9 +25,6 @@ function MainFeaturedPost(props) {
         backgroundPosition: '85% 0%',
         backgroundImage: `url(${hero})`,
       }}
-     >
-     </Paper>
-  );
-}
+     />)}
 
 export default MainFeaturedPost;

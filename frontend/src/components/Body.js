@@ -28,16 +28,16 @@ function Body(props){
                         </Grid>
                     </Grid>
                 </Grid>
-                    <Grid item xs={4}>
-                    <AboutCard
-                    title={sidebar.title}
-                    description={sidebar.description}
-                    />
-                    <Social
-                    socials={socials}
-                    />
-                </Grid>
+                <Grid item xs={4}>
+                <AboutCard
+                title={sidebar.title}
+                description={sidebar.description}
+                />
+                <Social
+                socials={socials}
+                />
             </Grid>
+        </Grid>
         )
     }
 

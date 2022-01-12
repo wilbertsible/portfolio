@@ -2,6 +2,7 @@ import Post from '../components/Post';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
 
+
 import Container from '@mui/material/Container';
 import Grid from '@mui/material/Grid'; 
 import Typography from '@mui/material/Typography';
