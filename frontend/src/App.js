@@ -9,8 +9,8 @@ import { createTheme, ThemeProvider } from '@mui/material/styles';
 import { Route, Routes } from "react-router-dom";
 
 import Home from './pages/Home';
-import ProjectLayout from './pages/ProjectLayout';
-import PC from './Content/PC/PC';
+import ProjectList from './pages/ProjectList'; 
+import ProjectLayout from './components/ProjectLayout'; 
 
 const theme = createTheme();
 
@@ -18,12 +18,14 @@ function App() {
   const [mobileView, setMobileView] = useState(false);
   const [socials, setSocials] = useState([]);
   const [headerSections, setheaderSections] = useState([])
+  const [content, setContent] = useState([])
 
   const url = "http://127.0.0.1:5000"
     
   useEffect(() => {
     fetchSocials();
     fetchHeaderSections();
+    fetchContent();
   }, [])
 
   async  function fetchSocials(){
@@ -39,6 +41,13 @@ function App() {
     .then((heardersResponse) =>{
       const headers = JSON.parse(heardersResponse.data);
       setheaderSections(headers);
+    })
+  }
+  async  function fetchContent(){
+    await axios.get(url + "/content")
+    .then((contentResponse) =>{
+      const headers = JSON.parse(contentResponse.data);
+      setContent(headers);
     })
   }
   
@@ -68,17 +77,18 @@ function App() {
           />} />
         <Route exact path="/Projects" 
         element={
-          <ProjectLayout
+          <ProjectList
             mobileView={mobileView}
             socials={socials}
             headers={headerSections}
           />} />
-        <Route exact path="/Projects/PC" 
+        <Route exact path="/Projects/:title" 
         element={
-          <PC
+          <ProjectLayout
             mobileView={mobileView}
             socials={socials}
             headers={headerSections}
+            content={content}
           />} />
       </Routes>
     </ThemeProvider>

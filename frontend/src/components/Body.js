@@ -45,17 +45,25 @@ function Body(props){
         return(
             <Grid container spacing={5} sx={{ mt: 0 }}>
                 <Grid item xs={12} >
-                <AboutCard
-                title={sidebar.title}
-                description={sidebar.description}
-                />
-                <Typography variant="h6" gutterBottom>
-                    {"Projects"}
-                </Typography>
-                <Divider />
-                <Post />
-                <Post />
-                <Post />
+                    <AboutCard
+                    title={sidebar.title}
+                    description={sidebar.description}
+                    />
+                    <Typography variant="h6" gutterBottom>
+                        {"Projects"}
+                    </Typography>
+                    <Divider />
+                    <Grid container spacing={0} >
+                        <Grid item xs={12} md={12} sx={{mt: 2}}>
+                            <Post />
+                        </Grid>
+                        <Grid item xs={12} md={12} sx={{mt: 2}}>
+                            <Post />
+                        </Grid>
+                        <Grid item xs={12} md={12} sx={{mt: 2}}>
+                            <Post />
+                        </Grid>
+                    </Grid>
                 </Grid>
                 <Grid item xs={4}>
                 <Social

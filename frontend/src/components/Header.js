@@ -8,7 +8,6 @@ import { Drawer } from '@mui/material';
 function Header(props){
 
     const {headers, title, mobileView} = props;
-    console.log(headers)
     const [state, setState] = React.useState({
         drawerOpen: false
     })
