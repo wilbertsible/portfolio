@@ -1,8 +1,8 @@
 import * as React from 'react';
 import Paper from '@mui/material/Paper';
-import PCImageLoader from '../Content/PC/PCImageLoader'
+
 function Banner(props) {
-  const { image } = props;
+  const { imageFile } = props;
   return (
     <Paper
       sx={{
@@ -12,11 +12,11 @@ function Banner(props) {
         backgroundSize: 'cover',
         backgroundRepeat: 'no-repeat',
         backgroundPosition: 'center',
-        backgroundImage: `url(${PCImageLoader(image).link})`,
+        backgroundImage: `url(data:image/jpg;base64,${imageFile.image})`,
         opacity:0.6,
         width:'100%',
         height: '250px',
       }}
-    />);}
-
-export default Banner;
+    />
+    )}
+export default Banner

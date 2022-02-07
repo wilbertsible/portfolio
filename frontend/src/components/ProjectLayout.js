@@ -10,15 +10,13 @@ import Container from '@mui/material/Container';
 
 
 function ProjectLayout(props){
-    const {headers, mobileView, content} = props
+    const {headers, mobileView} = props
     const {title} = useParams();
 
     return (
         <Container maxwidth="lg">
             <Header title="Wilbert Sible" headers={headers} mobileView={mobileView} />
-            <ProjectBody content={content.filter((article)=>{
-              return(article.fileName===title)
-            })[0]}/>
+            <ProjectBody projectTitle={title}/>
             <Footer />
         </Container>
     )

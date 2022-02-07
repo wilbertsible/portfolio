@@ -28,9 +28,11 @@ new_connection = Mongodb.MongoDatabase("websitedb", user, password)
 import app.API.social as MySocials
 import app.API.header_section as MyHeaders
 import app.API.content as MyContent
+import app.API.images as MyImages
 api.add_resource(MySocials.Social, "/social")
 api.add_resource(MyHeaders.Header, "/header")
-api.add_resource(MyContent.Content, "/content")
+api.add_resource(MyContent.Content, "/content/<string:project>")
+api.add_resource(MyImages.Images, "/images/<string:project>")
 
 
 app.register_blueprint(api_bp)
