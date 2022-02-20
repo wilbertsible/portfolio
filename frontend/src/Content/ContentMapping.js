@@ -1,17 +1,16 @@
-// import PC from './PC/PC'
-// import Default from './Default'
+import PC from './PC/PC'
+import Default from './Default'
 
-// const project = [
-//     {fileName:'', component:Default},
-//     {fileName:'PC', component: PC}
-// ]
 
-// function ContentMapping(props) {
-//     const { post } = props;
-//     console.log(post)
-//     const B = project.filter((item)=>{return(item.fileName===post)})[0].component
-//     console.log(B)
-//     return(<B />)
-// }
 
-// export default ContentMapping;
+function ContentMapping(props) {
+    const { contentList, getImage, projectTitle } = props;
+    console.log(contentList)
+    // const Component = contentList.length !== 0 ? contentList.filter((item)=>{return(item.fileName===projectTitle)})[0].component : ''
+    // console.log(Component)
+    
+    // return(<Component getImage={getImage}/>)
+    return(<contentList/>)
+}
+
+export default ContentMapping;
