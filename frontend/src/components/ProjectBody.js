@@ -13,57 +13,32 @@ import React, {useEffect, useState} from 'react'
 function ProjectBody(props){
     const {projectTitle} = props
     const [contentList, setContentList] = useState([])
-    const [imageList, setImageList] = useState([])
     
-    const url = "http://127.0.0.1:5000"
-
-    async function fetchContentList(){
-        await axios.get(url + "/content/" + projectTitle)
-        .then((contentResponse) =>{
-        const headers = JSON.parse(contentResponse.data);
-        setContentList(headers);
-        })
-        .catch((error) =>console.log(error))
-    }
-    async function fetchImageList(){
-        await axios.get(url + "/images/" + projectTitle)
-        .then((contentResponse) =>{
-          const headers = JSON.parse(contentResponse.data);
-          setImageList(headers);
-        })
-        .catch((error) =>console.log(error))
-    }
+    const url = "http://127.0.0.1:5000/content/"+projectTitle
 
     useEffect(() => {
+        const fetchContentList = async() =>{
+            await axios.get(url)
+            .then((contentResponse) =>{
+            const headers = JSON.parse(contentResponse.data);
+            setContentList(headers);
+            })
+            .catch((error) =>console.log(error))
+        }
         fetchContentList();
-        fetchImageList();
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     },[])
-
-
-    function getImage(file){
-        const imageBinary = imageList.filter((image) =>{
-            return(image.filename === file)
-        })
-        return imageList.length !== 0 ? imageBinary[0].image : ""
-    }
-    console.log(contentList)
     return(
         <>
-        <Banner 
-         imageFile={contentList.length !== 0 && imageList.length !== 0 ? imageList.filter((item)=>{
-            return item.filename===contentList[0].bannerImage
-        })[0]: ""}/>
+        <Banner imageFile={contentList.length !== 0 ? contentList[0].bannerImage: ""}/>
         <Grid container spacing={5} sx={{ mt: 0 }}>
             <Grid item xs={12} >
                 <Typography variant="h4" gutterBottom>
                     {contentList.length !== 0 ? contentList[0].title : ""}
                 </Typography>
                 <Divider />
-                {/* <PC getImage={getImage}/> */}
                 <ContentMapping 
-                contentList={contentList.length !== 0 ? contentList[0].fileName : ""} 
-                getImage={getImage}
-                projectTitle={projectTitle}/>
+                contentFileName={contentList.length !== 0 ? contentList[0].fileName : "Default"}/>
                 </Grid>
             </Grid>
         </>

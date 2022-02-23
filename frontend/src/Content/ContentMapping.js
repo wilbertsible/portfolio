@@ -1,16 +1,21 @@
-import PC from './PC/PC'
+
+import * as React from 'react'; 
+import PC from './PC'
+import Portfolio from './Portfolio'
 import Default from './Default'
+
+const projects ={
+    Default:Default,
+    PC:PC,
+    Portfolio:Portfolio
+}
 
 
 
 function ContentMapping(props) {
-    const { contentList, getImage, projectTitle } = props;
-    console.log(contentList)
-    // const Component = contentList.length !== 0 ? contentList.filter((item)=>{return(item.fileName===projectTitle)})[0].component : ''
-    // console.log(Component)
-    
-    // return(<Component getImage={getImage}/>)
-    return(<contentList/>)
+    const {contentFileName} = props;
+    const ComponentToRender = projects[contentFileName]
+    return(<ComponentToRender/>)
 }
 
 export default ContentMapping;

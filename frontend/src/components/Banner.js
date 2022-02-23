@@ -12,7 +12,7 @@ function Banner(props) {
         backgroundSize: 'cover',
         backgroundRepeat: 'no-repeat',
         backgroundPosition: 'center',
-        backgroundImage: `url(data:image/jpg;base64,${imageFile.image})`,
+        backgroundImage: `url(${imageFile})`,
         opacity:0.6,
         width:'100%',
         height: '250px',
