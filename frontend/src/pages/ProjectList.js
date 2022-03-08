@@ -8,9 +8,28 @@ import Grid from '@mui/material/Grid';
 import Typography from '@mui/material/Typography';
 import Divider from '@mui/material/Divider';
 
+import axios from 'axios';
+import React, {useEffect, useState} from 'react'
 
 function ProjectList(props) {
     const {mobileView, headers} = props
+    const [projectsList, setContentList] = useState([])
+    const url = "http://127.0.0.1:5000/"
+
+    useEffect(() => {
+        const fetchContentList = async() =>{
+            await axios.get(url + "projects")
+            .then((contentResponse) =>{
+            const headers = JSON.parse(contentResponse.data);
+            setContentList(headers);
+            })
+            .catch((error) =>console.log(error))
+        }
+        fetchContentList();
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+    },[])
+
+    console.log(projectsList)
     return(
         <Container maxwidth="lg">
             <Header title="Wilbert Sible" headers={headers} mobileView={mobileView} />
@@ -21,18 +40,11 @@ function ProjectList(props) {
                 </Typography>
                 <Divider />
                 </Grid>
-                <Grid item xs='6'>
-                    <Post />
-                </Grid>
-                <Grid item xs='6'>
-                    <Post />
-                </Grid>
-                <Grid item xs='6'>
-                    <Post />
-                </Grid>
-                <Grid item xs='6'>
-                    <Post />
-                </Grid>
+                {projectsList.map((project) =>{
+                    return(<Grid item xs='6'>
+                        <Post isHome={false} project={project}/>
+                    </Grid>
+                )})}
             </Grid>
             <Footer />
         </Container>

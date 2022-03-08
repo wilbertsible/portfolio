@@ -12,10 +12,10 @@ const projects ={
 
 
 
-function ContentMapping(props) {
-    const {contentFileName} = props;
-    const ComponentToRender = projects[contentFileName]
+function ProjectMapping(props) {
+    const {projectFileName} = props;
+    const ComponentToRender = projects[projectFileName]
     return(<ComponentToRender/>)
 }
 
-export default ContentMapping;
+export default ProjectMapping;
